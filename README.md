@@ -10,7 +10,8 @@ A CLI tool and library of utilitites aimed at making development of API's with [
 - [ ] Simple Model generators: 
   - [ ] Java
 - [ ] Server code generator: 
-  - [ ] Java 
+  - [ ] Java Vert.x Router generator
+  - [ ] Java vert.x Route validator generator
 - [ ] Additional Smithy validators
 - [ ] Gitbook docs 
 - [ ] Create a brew tap (?)
