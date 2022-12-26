@@ -1,20 +1,16 @@
 # Anvil
-A CLI tool and library of utilitites aimed at making development of API's with [Smithy]() easier
+A web framework built on top of Vertx that focuses on building to api contracts. 
+
+Anvil is intended to be used in conjunction with a Smithy API Specification.
 
 ## Planned Features
-- [ ] Executable CLI for Smithy that can be used as a standalone tool in build systems such as Bazel and Please: 
-  - [ ] Pull in [smithy-cli-executable code](https://github.com/mellemahp/smithy-cli-executable)
-  - [ ] Wrap with a bash script for ease of use 
-  - [ ] Add an install script
-- [ ] Plugin management 
-- [ ] Simple Model generators: 
-  - [ ] Java
-- [ ] Server code generator: 
+- [ ] [Sgf4j](https://github.com/mellemahp/sgf4j) Plugins for generating:
+  - [ ] Model classes (will use base from Sgf4j which is still in work) 
+  - [ ] Abstract operation definitions
   - [ ] Java Vert.x Router generator
   - [ ] Java vert.x Route validator generator
-- [ ] Additional Smithy validators
-- [ ] Gitbook docs 
-- [ ] Create a brew tap (?)
+- [ ] API Exception mapping (? possibly in a different package?)
+- [ ] Updated Vertx Interface-defined Actor generator
   
 
   
