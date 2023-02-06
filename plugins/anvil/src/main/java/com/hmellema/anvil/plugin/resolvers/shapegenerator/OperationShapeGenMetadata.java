@@ -35,6 +35,7 @@ public class OperationShapeGenMetadata extends ShapeGenMetadata {
         this.className = shape.getId().getName();
         this.requestType = inputShape.getTypeName();
         this.responseType = outputShape.getTypeName();
+        this.nameSpace = shape.getId().getNamespace();
         this.typeName = ParameterizedTypeName.get(paramClassName, requestType, responseType);
     }
 
