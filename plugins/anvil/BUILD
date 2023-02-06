@@ -19,7 +19,8 @@ java_binary(
         "Plugin-Class: com.hmellema.anvil.plugins.AnvilPlugin",
         "Plugin-Id: anvil-plugin",
         "Plugin-Provider: Hunter Mellema",
-        "Plugin-Version: 0.0.1"
+        "Plugin-Version: 0.0.1",
+        "Plugin-Dependencies: core-plugin"
     ],
     main_class = "does.not.exist",
     visibility = ["//visibility:public"],
