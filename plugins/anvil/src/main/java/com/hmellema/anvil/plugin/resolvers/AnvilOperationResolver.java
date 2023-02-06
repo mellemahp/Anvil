@@ -1,26 +1,27 @@
 package com.hmellema.anvil.plugin.resolvers;
 
-import com.hmellema.sgf4j.core.plugin.extensionpoints.ResolverExtensionPoint;
-import com.hmellema.sgf4j.core.shapegenerator.AbstractShapeGenerator;
-import com.hmellema.sgf4j.core.typeconversion.TypeConverterMap;
-import com.hmellema.anvil.plugin.resolvers.shapegenerator.AnvilOperationShapeGenerator;
-import java.util.EnumSet;
-import org.pf4j.Extension;
-import software.amazon.smithy.model.Model;
+import com.hmellema.anvil.plugin.resolvers.shapegenerator.OperationShapeGenMetadata;
+import com.hmellema.sgf4j.gendata.ShapeGenMetadata;
+import com.hmellema.sgf4j.loader.MetaDataLoader;
+import com.hmellema.sgf4j.resolving.Resolver;
+
+import software.amazon.smithy.model.shapes.OperationShape;
 import software.amazon.smithy.model.shapes.Shape;
 import software.amazon.smithy.model.shapes.ShapeType;
 
-@Extension
-public class AnvilOperationResolver implements ResolverExtensionPoint {
-  private static final EnumSet<ShapeType> SUPPORTED_SHAPES = EnumSet.of(ShapeType.OPERATION);
+public class AnvilOperationResolver implements Resolver {
+    private static final ShapeType SUPPORTED_TYPE = ShapeType.OPERATION;
 
-  @Override
-  public EnumSet<ShapeType> getSupportedShapeTypes() {
-    return SUPPORTED_SHAPES;
-  }
+    @Override
+    public ShapeType getSupportedShapeType() {
+        return SUPPORTED_TYPE;
+    }
 
-  @Override
-  public AbstractShapeGenerator process(Shape shape, Model model, TypeConverterMap converterMap) {
-    return new AnvilOperationShapeGenerator(shape);
-  }
+    @Override
+    public ShapeGenMetadata resolve(Shape shape, MetaDataLoader metaDataLoader) {
+        var operationShape = (OperationShape) shape; 
+        var inputShape = metaDataLoader.resolve(operationShape.getInputShape());
+        var outputShape = metaDataLoader.resolve(operationShape.getOutputShape());
+        return new OperationShapeGenMetadata(shape, inputShape, outputShape);
+    }
 }
